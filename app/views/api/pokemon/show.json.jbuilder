@@ -1,9 +1,10 @@
 
   json.set! 'pokemon' do
-    json.set! @pokemon.id do
-      json.extract! @pokemon, :id, :name, :attack, :defense, :moves, :poke_type, :image_url
-      json.item_ids @pokemon.items.pluck(:id)
-    end
+    # json.set! @pokemon.id do  #don't need for a single pokemon
+      json.extract! @pokemon, :id, :name, :attack, :defense, :moves, :poke_type
+      json.image_url asset_path(@pokemon.image_url)
+      json.item_ids @pokemon.item_ids
+    # end
   end
 
   json.items do
